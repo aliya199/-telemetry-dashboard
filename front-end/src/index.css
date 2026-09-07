@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #F4E3B2;
+  color: #310E10;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #F4E3B2; }
+::-webkit-scrollbar-thumb { background: #947268; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #310E10; }
+
+@layer components {
+
+  /* ── Buttons ── */
+  .btn {
+    @apply inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-md
+           text-sm font-semibold transition-all duration-150 focus:outline-none
+           focus-visible:ring-2 focus-visible:ring-ink/40
+           disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+  .btn-primary { @apply btn bg-ink text-app-bg hover:bg-ink/80; }
+  .btn-ghost   { @apply btn border border-muted text-ink hover:bg-muted/10; }
+  .btn-danger  { @apply btn bg-danger text-white hover:bg-danger/80; }
+
+  /* ── Cards — slight frosted glass so lily shows through subtly ── */
+  .card {
+    @apply rounded-xl p-5 border border-muted/30
+           bg-white/90 backdrop-blur-sm;
+    box-shadow: 0 1px 4px rgba(49,14,16,0.07), 0 0 0 1px rgba(148,114,104,0.12);
+  }
+  .card-alt {
+    @apply rounded-xl p-5 border border-muted/20
+           bg-[#FDF8ED]/90 backdrop-blur-sm;
+    box-shadow: 0 1px 4px rgba(49,14,16,0.05), 0 0 0 1px rgba(148,114,104,0.10);
+  }
+
+  /* ── Badges ── */
+  .badge {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full
+           text-[11px] font-bold uppercase tracking-wider;
+  }
+  .badge-online   { @apply badge bg-green-100  text-green-800; }
+  .badge-degraded { @apply badge bg-amber-100  text-accent; }
+  .badge-critical { @apply badge bg-red-100    text-danger; }
+  .badge-low      { @apply badge bg-blue-100   text-blue-800; }
+  .badge-high     { @apply badge bg-amber-100  text-accent; }
+
+  /* ── Form controls ── */
+  .field-label {
+    @apply block text-muted text-[11px] uppercase tracking-widest mb-1 font-semibold;
+  }
+  .field-input {
+    @apply w-full bg-[#FDF8ED] border border-muted/50 rounded-lg px-3 py-2
+           text-ink text-sm placeholder-muted/60
+           focus:outline-none focus:border-ink transition-colors;
+  }
+  .field-select {
+    @apply field-input appearance-none cursor-pointer;
+  }
+
+  /* ── Divider ── */
+  .divider { @apply border-t border-muted/25 my-4; }
+}
